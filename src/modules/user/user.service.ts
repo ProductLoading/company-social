@@ -2,10 +2,9 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
-
-import { User } from './entities/user.entity';           // User Entity
-import { CreateUserDto } from './dto/create-user.dto';  // DTO - create
-import { UpdateUserDto } from './dto/update-user.dto';  // DTO - update
+import { User } from './entities/user.entity'; // User Entity
+import { CreateUserDto } from './dto/create-user.dto'; // DTO - create
+import { UpdateUserDto } from './dto/update-user.dto'; // DTO - update
 
 @Injectable()
 export class UserService {
@@ -33,7 +32,6 @@ export class UserService {
     }
     return user;
   }
-  
 
   /**
    * Email adresine göre kullanıcı bulmak için ek method (opsiyonel).
@@ -67,6 +65,7 @@ export class UserService {
     const user = await this.findOne(id);
 
     if (updateUserDto.password) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
       updateUserDto.password = await bcrypt.hash(updateUserDto.password, 10);
     }
     Object.assign(user, updateUserDto);
