@@ -1,0 +1,51 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CreateUserInput {
+  email: String!
+  first_name: String!
+  last_name: String!
+  office_id: Float
+  password: String!
+  profile_picture_url: String
+  status: String = "active"
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Mutation {
+  createUser(createUserInput: CreateUserInput!): User!
+  removeUser(id: Float!): Boolean!
+  updateUser(id: Float!, updateUserInput: UpdateUserInput!): User!
+}
+
+type Query {
+  user(id: Float!): User!
+  users: [User!]!
+}
+
+input UpdateUserInput {
+  email: String
+  first_name: String
+  last_name: String
+  office_id: Float
+  password: String
+  profile_picture_url: String
+  status: String = "active"
+}
+
+type User {
+  created_at: DateTime!
+  email: String!
+  first_name: String!
+  last_name: String!
+  office_id: Float
+  profile_picture_url: String
+  status: String!
+  updated_at: DateTime!
+  user_id: ID!
+}

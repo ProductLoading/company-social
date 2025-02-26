@@ -3,6 +3,9 @@
 /node_modules
 /build
 
+/data
+/abc.py
+
 # Logs
 logs
 *.log

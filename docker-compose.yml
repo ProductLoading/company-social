@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:14
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123123
+      POSTGRES_DB: company_social_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data:/var/lib/postgresql/data
+
+
+
+
+# docker ps --format "{{.Names}}"
+# docker cp /Users/bhupeshpatil/Downloads/abcde/abcd1/company-social-dumb <actual_container_name>:/tmp/dump_file.dump
+# docker exec -it <actual_container_name> pg_restore -U postgres -d company_social_db -v /tmp/dump_file.dump
